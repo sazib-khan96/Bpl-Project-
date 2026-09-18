@@ -16,9 +16,9 @@ const Player = ({player}) => {
                 <p>{bowlingStyle}</p>
                 <p>{battingStyle}</p>
             </div>
-            <div className='flex justify-between p-3'>
+            <div className='flex justify-between p-3 items-center'>
                 <h3>${price}</h3>
-                <button>Abailabale</button>
+                <button className='py-2 px-5 rounded-2xl font-semibold text-white bg-amber-400 shadow-2xl hover:bg-amber-500'>Abailabale</button>
             </div>
 
 
