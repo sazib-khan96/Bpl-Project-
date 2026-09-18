@@ -6,9 +6,9 @@ const Players = ({playersData}) => {
     const allPlayers = use(playersData)
     
     return (
-        <div>
+        <div className='w-6xl mx-auto mt-10'>
             <h1>Our Players List</h1>
-            <div>
+            <div className='grid grid-cols-3  gap-5'>
                 {
                     allPlayers.map(player => <Player player={player} key={player.id}></Player> )
                 }
