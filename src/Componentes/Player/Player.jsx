@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Player = ({player}) => {
+
+    const [play,setPlay] = useState(true)
+
+    const playHandel = ()=>{
+        if(play === true){
+            setPlay(false)
+        }
+        else{
+            setPlay(true)
+        }
+    }
+
+    
 
     const {name,country,role,image,price,bowlingStyle,battingStyle,rating} = player
     return (
@@ -18,7 +31,7 @@ const Player = ({player}) => {
             </div>
             <div className='flex justify-between p-3 items-center'>
                 <h3>${price}</h3>
-                <button className='py-2 px-5 rounded-2xl font-semibold text-white bg-amber-400 shadow-2xl hover:bg-amber-500'>Abailabale</button>
+                <button onClick={playHandel}  className={`py-2 px-5 rounded-2xl font-semibold text-white ${play === false ? "bg-green-500": "bg-amber-400"} shadow-2xl hover:bg-amber-500`}>{play=== true?"Available" : "selected"}</button>
             </div>
 
 
