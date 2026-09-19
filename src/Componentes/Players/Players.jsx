@@ -2,15 +2,15 @@ import React, { use } from 'react';
 
 import Player from "../Player/Player"
 
-const Players = ({playersData}) => {
+const Players = ({playersData,getSelectPlayer}) => {
     const allPlayers = use(playersData)
     
     return (
-        <div className='w-6xl mx-auto mt-10'>
-            <h1 className='font-bold text-4xl m-5'>Our Players List</h1>
-            <div className='grid grid-cols-3  gap-5'>
+        <div className='lg:w-6xl mx-auto mt-10 p-3'>
+            <h1 className=' text-2xl mb-10 border inline px-6 py-2'>Our Players List</h1>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5'>
                 {
-                    allPlayers.map(player => <Player player={player} key={player.id}></Player> )
+                    allPlayers.map(player => <Player player={player}selectplayer={getSelectPlayer} key={player.id}></Player> )
                 }
             </div>
         </div>
