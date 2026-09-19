@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 
-const Player = ({ player,getSelectPlayer }) => {
-  const [play, setPlay] = useState(false);
+const Player = ({ player,setAvilableBalance,availableBalance }) => {
+  // btn selected or not selected 
+  const [selected,setSelected] = useState(false)
 
-const selectHandel = ()=>{
-  setPlay(true);
- getSelectPlayer(player)
+const btnSelected = (player)=> {
+  if(selected){
+    setSelected(false)
+  }
+  else{
+    setSelected(true)
+  };
+  if(availableBalance < player.price){
+     alert('Not enough Balance')
+     return
+  }
+  setAvilableBalance(availableBalance -player.price)
+  
 }
 
   const {
@@ -19,7 +30,7 @@ const selectHandel = ()=>{
     rating,
   } = player;
   return (
-    <div className="w-100 gap-5 md:p-3 shadow-xl rounded-xl gap-5 lg:gap-5 ">
+    <div className="p-3 shadow-xl rounded-xl gap-5 ">
       <img className="rounded-xl w-100 h-60" src={image} alt="" />
       <h3 className="font-bold mt-3">Name:{name}</h3>
       <p>Country : {country}</p>
@@ -33,8 +44,8 @@ const selectHandel = ()=>{
       </div>
       <div className="flex justify-between p-3 items-center">
         <h3>${price}</h3>
-        <button disabled={play} onClick={selectHandel} className={`py-2 px-5 rounded-2xl font-semibold text-white ${play === true ? "bg-green-500 cursor-not-allowed" : "bg-amber-400"} shadow-2xl hover:bg-amber-500`}>
-          {play ? "Selected " : "Available"}
+        <button onClick={()=>{btnSelected(player)}} className={`py-2 px-5 rounded-2xl font-semibold text-white ${selected === true ? "bg-green-500 cursor-not-allowed" : "bg-amber-400"} shadow-2xl hover:bg-amber-500 ${selected? 'hover:bg-amber-600':''}`}>
+          {selected ? "Selected " : "Available"}
         </button>
       </div>
     </div>

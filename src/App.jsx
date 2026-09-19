@@ -20,6 +20,9 @@ function App() {
   //  toggle fiture
   const [toggle, setToggle] = useState(true);
 
+  // available balance function here 
+  const [availableBalance ,setAvilableBalance]= useState(10000)
+
 let [selectplayer,setSelectPlayer] = useState([])
 
   const getSelectPlayer = (player)=>{
@@ -30,9 +33,9 @@ let [selectplayer,setSelectPlayer] = useState([])
 
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar availableBalance={availableBalance}></Navbar>
 
-      <div className="flex flex-col w-100 gap-5 lg:flex p-5 w-6xl mx-auto justify-between items-center striky top-0">
+      <div className=" gap-5 lg:flex p-5 w-6xl mx-auto justify-between items-center striky top-0">
         <h1 className="font-bold text-2xl">Available Players</h1>
         <div className="flex">
           <button
@@ -50,7 +53,7 @@ let [selectplayer,setSelectPlayer] = useState([])
 
       {toggle === true ? (
         <Suspense fallback={Loading}>
-          <Players playersData={playersData} selectplayer={getSelectPlayer}></Players>
+          <Players playersData={playersData}availableBalance={availableBalance} setAvilableBalance={setAvilableBalance}></Players> 
         </Suspense>
       ) : (
         <SelectedPlayers></SelectedPlayers>
