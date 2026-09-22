@@ -24,16 +24,23 @@ function App() {
   // available balance function here 
   const [availableBalance ,setAvilableBalance]= useState(10000)
 
-let [selectplayer,setSelectPlayer] = useState([])
+const [selectplayer, setSelectPlayer] = useState([]);
 
-  
+const removePlayers = (player) => {
+  const newSelectPlayer = selectplayer.filter((newPlayer) => {
+    return newPlayer.id !== player.id;
+  });
+
+  setSelectPlayer(newSelectPlayer);
+};
+
 
   return (
     <div>
       <Navbar availableBalance={availableBalance}></Navbar>
 
       <div className=" gap-5 lg:flex p-5 w-6xl mx-auto justify-between items-center striky top-0">
-        <h1 className="font-bold text-2xl">Available Players</h1>
+        <h1 className="font-bold text-2xl">{toggle?"Available Players":"Selected Players"}</h1>
         <div className="flex">
           <button
             onClick={() => setToggle(true)}
@@ -42,8 +49,8 @@ let [selectplayer,setSelectPlayer] = useState([])
           </button>
           <button
             onClick={() => setToggle(false)}
-            className={`px-5 py-2 border ${toggle === false ? "bg-amber-500" : ""}`} >
-            Selected(0)
+            className={`px-5 py-2 border ${toggle === false ? "bg-amber-500" : ""}`} >Selected ({selectplayer.length})
+            
           </button>
         </div>
       </div>
@@ -53,7 +60,7 @@ let [selectplayer,setSelectPlayer] = useState([])
         <Players selectplayer={selectplayer} setSelectPlayer={setSelectPlayer} playersData={playersData}availableBalance={availableBalance} setAvilableBalance={setAvilableBalance}></Players> 
         </Suspense>
       ) : (
-        <SelectedPlayers selectplayer={selectplayer} ></SelectedPlayers>
+        <SelectedPlayers selectplayer={selectplayer} removePlayers={removePlayers}></SelectedPlayers>
       )}
       <SubscribeFrom></SubscribeFrom>
       {/* Footer */}
