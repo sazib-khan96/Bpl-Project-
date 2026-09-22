@@ -3,7 +3,8 @@ import Navbar from "./Componentes/Navbar";
 import { Suspense, useState } from "react";
 import Players from "./Componentes/Players/Players";
 import SelectedPlayers from "./Componentes/SelectedPlayers";
-
+import Footer from "./Componentes/Footer";
+import SubscribeFrom from "./Componentes/SubscribeFrom";
 
 const featchPlayers = async () => {
   const res = await fetch("/Players.json");
@@ -58,6 +59,9 @@ let [selectplayer,setSelectPlayer] = useState([])
       ) : (
         <SelectedPlayers></SelectedPlayers>
       )}
+      <SubscribeFrom></SubscribeFrom>
+      {/* Footer */}
+      <Footer></Footer>
     </div>
   );
 }

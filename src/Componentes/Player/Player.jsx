@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Player = ({ player,setAvilableBalance,availableBalance }) => {
   // btn selected or not selected 
