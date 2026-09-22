@@ -9,14 +9,14 @@ const Footer = () => {
         <img className="w-[100px] mb-5" src={footerImg} alt="" />
         <div className="flex gap-3">
           <div className="w-[300px]">
-            <h2>About Us</h2>
+            <h2 className="text-2xl mb-3 font-semibold">About Us</h2>
             <p>
               We are a passionate team dedicated to providing the best services
               to our customers.
             </p>
           </div>
           <div className="w-[400px] text-center">
-            <h2>Quick Linka</h2>
+            <h2 className="text-2xl mb-3 font-semibold">Quick Linka</h2>
             <ul>
               <li>Home</li>
               <li>Services</li>
