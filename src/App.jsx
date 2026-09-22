@@ -27,11 +27,14 @@ function App() {
 const [selectplayer, setSelectPlayer] = useState([]);
 
 const removePlayers = (player) => {
-  const newSelectPlayer = selectplayer.filter((newPlayer) => {
+  const newSelectPlayer = selectplayer.filter(newPlayer => {
     return newPlayer.id !== player.id;
   });
 
   setSelectPlayer(newSelectPlayer);
+const newBalence =  availableBalance + player.price
+setAvilableBalance(newBalence)
+  
 };
 
 
