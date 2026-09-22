@@ -26,11 +26,7 @@ function App() {
 
 let [selectplayer,setSelectPlayer] = useState([])
 
-  const getSelectPlayer = (player)=>{
-    const newSelectPlayer = [...selectplayer,player]
-    setSelectPlayer(newSelectPlayer)
-    console.log(newSelectPlayer)
-  }
+  
 
   return (
     <div>
@@ -54,10 +50,10 @@ let [selectplayer,setSelectPlayer] = useState([])
 
       {toggle === true ? (
         <Suspense fallback={Loading}>
-          <Players playersData={playersData}availableBalance={availableBalance} setAvilableBalance={setAvilableBalance}></Players> 
+        <Players selectplayer={selectplayer} setSelectPlayer={setSelectPlayer} playersData={playersData}availableBalance={availableBalance} setAvilableBalance={setAvilableBalance}></Players> 
         </Suspense>
       ) : (
-        <SelectedPlayers></SelectedPlayers>
+        <SelectedPlayers selectplayer={selectplayer} ></SelectedPlayers>
       )}
       <SubscribeFrom></SubscribeFrom>
       {/* Footer */}

@@ -1,7 +1,12 @@
 import { useState } from "react";
 
-const Player = ({ player,setAvilableBalance,availableBalance }) => {
+const Player = ({ player,setAvilableBalance,availableBalance,selectplayer,setSelectPlayer }) => {
+
+  // selected players function
+
   // btn selected or not selected 
+ 
+
   const [selected,setSelected] = useState(false)
 
 const btnSelected = (player)=> {
@@ -17,6 +22,8 @@ const btnSelected = (player)=> {
   }
   setAvilableBalance(availableBalance -player.price)
   
+  const newSelectedPlayers = [...selectplayer,player]
+  setSelectPlayer(newSelectedPlayers)
 }
 
   const {
@@ -43,7 +50,7 @@ const btnSelected = (player)=> {
         <p>{battingStyle}</p>
       </div>
       <div className="flex justify-between p-3 items-center">
-        <h3>${price}</h3>
+        <h3 className="font-semibold">${price}</h3>
         <button onClick={()=>{btnSelected(player)}} className={`py-2 px-5 rounded-2xl font-semibold text-white ${selected === true ? "bg-green-500 cursor-not-allowed" : "bg-amber-400"} shadow-2xl hover:bg-amber-500 ${selected? 'hover:bg-amber-600':''}`}>
           {selected ? "Selected " : "Available"}
         </button>
