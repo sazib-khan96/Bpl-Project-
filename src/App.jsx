@@ -5,6 +5,7 @@ import Players from "./Componentes/Players/Players";
 import SelectedPlayers from "./Componentes/SelectedPlayers";
 import Footer from "./Componentes/Footer";
 import SubscribeFrom from "./Componentes/SubscribeFrom";
+import { ToastContainer } from "react-toastify";
 
 const featchPlayers = async () => {
   const res = await fetch("/Players.json");
@@ -42,17 +43,20 @@ setAvilableBalance(newBalence)
     <div>
       <Navbar availableBalance={availableBalance}></Navbar>
 
-      <div className=" gap-5 lg:flex p-5 w-6xl mx-auto justify-between items-center striky top-0">
-        <h1 className="font-bold text-2xl">{toggle?"Available Players":"Selected Players"}</h1>
+      <div className="w-[100%] flex items-center font-semibold md:flex  p-5 max-w-6xl mx-auto justify-between striky top-0">
+        <div>
+          <h1 className="text-center md:font-bold text-2xl text-left max-w-[1200px]">{toggle?"Available Players":"Selected Players"}</h1>
+        </div>
         <div className="flex">
+          {/* main toggle btn  */}
           <button
             onClick={() => setToggle(true)}
-            className={`px-5 py-2 border ${toggle === true ? "bg-amber-500" : ""}`}>
+            className={`px-5 py-2 rounded-l-full border-1 border-yellow-200 border-r-0 shadow-xl font-semibold ${toggle === true ? "bg-amber-500" : ""}`}>
             Available
           </button>
           <button
             onClick={() => setToggle(false)}
-            className={`px-5 py-2 border ${toggle === false ? "bg-amber-500" : ""}`} >Selected ({selectplayer.length})
+            className={`px-5 py-2 border-1 border-yellow-200 border-l-0 rounded-r-2xl shadow-xl font-semibold ${toggle === false ? "bg-amber-500" : ""}`} >Selected ({selectplayer.length})
             
           </button>
         </div>
@@ -65,10 +69,15 @@ setAvilableBalance(newBalence)
       ) : (
         <SelectedPlayers selectplayer={selectplayer} removePlayers={removePlayers}></SelectedPlayers>
       )}
-      <SubscribeFrom></SubscribeFrom>
+      <div className="p-3">
+        <SubscribeFrom></SubscribeFrom>
+      </div>
       {/* Footer */}
       <Footer></Footer>
+
+      <ToastContainer></ToastContainer>
     </div>
+
   );
 }
 
