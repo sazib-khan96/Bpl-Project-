@@ -28,7 +28,7 @@ const Player = ({
       toast.info("Player already selected!");
       return;
     }
-    if (selected <= 6) {
+    if (selected >= 6) {
       alert("Sorry! You can't add more players")
       return;
     }
