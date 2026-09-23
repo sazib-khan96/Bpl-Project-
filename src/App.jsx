@@ -43,20 +43,20 @@ setAvilableBalance(newBalence)
     <div>
       <Navbar availableBalance={availableBalance}></Navbar>
 
-      <div className="w-[100%] flex items-center font-semibold md:flex  p-5 max-w-6xl mx-auto justify-between striky top-0">
+      <div className="w-full flex items-center font-semibold md:flex  p-5 max-w-6xl mx-auto justify-between striky top-0">
         <div>
-          <h1 className="text-center md:font-bold text-2xl text-left max-w-[1200px]">{toggle?"Available Players":"Selected Players"}</h1>
+          <h1 className=" md:font-bold text-2xl text-left max-w-7xl">{toggle?"Available Players":"Selected Players"}</h1>
         </div>
         <div className="flex">
           {/* main toggle btn  */}
           <button
             onClick={() => setToggle(true)}
-            className={`px-5 py-2 rounded-l-full border-1 border-yellow-200 border-r-0 shadow-xl font-semibold ${toggle === true ? "bg-amber-500" : ""}`}>
+            className={`px-5 py-2 rounded-l-full border border-yellow-200 border-r-0 shadow-xl font-semibold ${toggle === true ? "bg-amber-500" : ""}`}>
             Available
           </button>
           <button
             onClick={() => setToggle(false)}
-            className={`px-5 py-2 border-1 border-yellow-200 border-l-0 rounded-r-2xl shadow-xl font-semibold ${toggle === false ? "bg-amber-500" : ""}`} >Selected ({selectplayer.length})
+            className={`px-5 py-2 border border-yellow-200 border-l-0 rounded-r-2xl shadow-xl font-semibold ${toggle === false ? "bg-amber-500" : ""}`} >Selected ({selectplayer.length})
             
           </button>
         </div>
